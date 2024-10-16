@@ -7,7 +7,7 @@ def main():
     chars = get_count_chars(text)
 
     print(f"--- Begin report of {book_path} ---")
-    print(f"{num_words} found in this document")
+    print(f"{num_words} words found in this document")
 
     for letter, count in chars.items():
         print(f"We found the letter '{letter}' {count} times")
