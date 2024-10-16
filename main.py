@@ -1,12 +1,18 @@
 import string
 
 def main():
-    book_path = "books/frankenstein.txt"
+    book_path = input("Enter path here: ")
     text = get_book_text(book_path)
     num_words = get_num_words(text)
-    chars_dict = get_count_chars(text)
-    print(f"{num_words} words found in this document")
-    print(chars_dict)
+    chars = get_count_chars(text)
+
+    print(f"--- Begin report of {book_path} ---")
+    print(f"{num_words} found in this doument")
+
+    for letter, count in chars.items():
+        print(f"We found the letter '{letter}' {count} times")
+    
+    print("--- End of report ---")
 
 def get_num_words(text):
     words = text.split()
@@ -22,6 +28,8 @@ def get_count_chars(text):
         lowered = c.lower()
         if lowered in string.ascii_lowercase:
             chars_dict[lowered] = chars_dict.get(lowered, 0) + 1
-    return chars_dict
+    
+    sorted_chars = sorted(chars_dict.items())
+    return dict(sorted_chars)
 
 main()
